@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/constants.dart';
 
 class AddItem extends StatelessWidget {
   const AddItem({super.key});
@@ -22,34 +23,53 @@ class _AddItemState extends State<_AddItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      appBar: AppBar(
+        title: Container(
+          child: Row(children: [
+
+          ],),
+        ),
+      ),
+
       body: Center(
         child: Container(
+          padding: EdgeInsets.all(10),
           width: double.maxFinite,
           height: double.maxFinite,
+          color: Color(0xFF2A3644),
           child: Column(
             children: [
 
               Container(
-                child: TextField(
 
-                ),
-              ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
 
-              Container(
-                child: TextField(
+                    Text(
+                        "Title",
+                      style: TextStyle(color: Colors.white),
+                    ),
 
-                ),
-              ),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: Constants().descriptionTitle,
+                      ),
+                    ),
 
-              Container(
-                child: TextField(
+                    Text(
+                        Constants().description,
+                        style: TextStyle(color: Colors.white),
+                    ),
 
-                ),
-              ),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: Constants().enterDescription
+                      ),
+                    )
 
-              Container(
-                child: TextField(
-
+                  ],
                 ),
               ),
 

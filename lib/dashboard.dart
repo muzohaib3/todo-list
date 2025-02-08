@@ -14,7 +14,6 @@ class Dashboard extends StatelessWidget {
       home: Scaffold(
 
         floatingActionButton: Container(
-
           padding: EdgeInsets.only(bottom: 100.0),
           child: FloatingActionButton.extended(
             onPressed: (){
@@ -30,6 +29,7 @@ class Dashboard extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
+          backgroundColor: Color(0xFF2A3644),
           leading: new IconButton(
             icon: new Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () => Navigator.of(context).pop(),
@@ -38,8 +38,8 @@ class Dashboard extends StatelessWidget {
         body: Center(
 
           child: Container(
-            margin: EdgeInsets.only(left: 10),
-            padding: EdgeInsets.only(right: 10),
+            color: Color(0xFF2A3644),
+            padding: EdgeInsets.all(10),
             width: double.infinity,
             child: Column(
               children: [
