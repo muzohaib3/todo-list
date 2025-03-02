@@ -45,12 +45,17 @@ class _DashboardState extends State<_Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.blue.shade900,
+        unselectedItemColor: Colors.grey,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: [
-          BottomNavigationBarItem(icon: Image.asset("assets/images/home.png"), label: CustomString.Home),
+          BottomNavigationBarItem(
+              icon: Image.asset("assets/images/home.png"), label: CustomString.Home
+          ),
           BottomNavigationBarItem(icon: Image.asset("assets/images/deliveries.png"), label: CustomString.Profile),
-          BottomNavigationBarItem(icon: Image.asset("assets/images/wallet.png"), label: CustomString.Settings),
+          BottomNavigationBarItem(icon: Image.asset("assets/images/wallet.png"), label: CustomString.Wallet),
           BottomNavigationBarItem(icon: Image.asset("assets/images/location.png"), label: CustomString.Location),
         ],
       ),

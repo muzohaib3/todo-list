@@ -13,7 +13,11 @@ class CustomString{
   static const String Profile = "Profile";
   static const String Settings = "Settings";
   static const String Location = "Location";
+  static const String Tracking = "Tracking";
+  static const String Track = "Track";
+  static const String TrackingNumber = "Tracking Number";
   static const String Total_Wallet_Balance = "Total Wallet Balance";
+  static const String Wallet = "Wallet";
   static const String Pay_Now = "Pay Now";
   static const String Shipment_Trend = "Shipment Trend";
   static const String Shipments_Booked = "Shipments Booked";
@@ -28,6 +32,10 @@ class CustomString{
   static const String Select_All = "Select All";
   static const String Deliveries = "Deliveries";
   static const String Search = "Search";
+  static const String Out_For_Delivery = "OUT FOR DELIVERY";
+  static const String Tracking_Info = "Please see your tracking information below.";
+  static const String BlueEX_Shipping_Label = "BlueEX Shipping Label :";
+  static const String Order_info_received = "Order information received, pending at Shipper's end.";
 
 
   static const String Arrived_Shipments = "Arrived Shipments";
@@ -37,6 +45,9 @@ class CustomString{
   static const String Delivered_Shipments = "Delivered Shipments";
   static const String Returns = "Returns";
   static const String Delivered = "Delivered";
+  static const String Transaction = "Transaction";
+  static const String Balance = "Balance";
+  static const String Date = "Date";
 
 
 }
