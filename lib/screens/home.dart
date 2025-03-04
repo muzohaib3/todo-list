@@ -22,6 +22,7 @@ class Home extends StatelessWidget {
                   child: Text(
                     CustomString.login,
                     style: TextStyle(
+                        fontFamily: 'Ubuntu',
                       color: Colors.black,
                       fontSize: 30,
                       fontWeight: FontWeight.bold
@@ -33,7 +34,10 @@ class Home extends StatelessWidget {
                   margin: EdgeInsets.only(top: 10),
                   child: Text(
                       CustomString.enter_details,
-                    style: TextStyle(fontWeight: FontWeight.w100),
+                    style: TextStyle(
+                        fontFamily: 'Ubuntu',
+                        fontWeight: FontWeight.w100
+                    ),
                   ),
                 ),
 
@@ -45,6 +49,10 @@ class Home extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: TextField(
+                    style: TextStyle(
+                      fontFamily: 'Ubuntu',
+                        fontWeight: FontWeight.normal
+                    ),
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: CustomString.User_Name,
@@ -65,6 +73,7 @@ class Home extends StatelessWidget {
                       hintText: CustomString.Password,
                     ),
                     style: TextStyle(
+                        fontFamily: 'Ubuntu',
                       fontWeight: FontWeight.normal
                     ),
                   ),
@@ -75,7 +84,7 @@ class Home extends StatelessWidget {
                   margin: EdgeInsets.only(top: 20),
                   padding: EdgeInsets.only(left: 20,right: 20),
                   decoration: BoxDecoration(
-                    color: Colors.indigo,
+                    color: Colors.blue.shade900,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: TextButton(
@@ -85,6 +94,7 @@ class Home extends StatelessWidget {
                       child: Text(
                           CustomString.login,
                         style: TextStyle(
+                            fontFamily: 'Ubuntu',
                           color: Colors.white,
                           fontWeight: FontWeight.bold
                         ),
@@ -94,7 +104,12 @@ class Home extends StatelessWidget {
 
                 Container(
                   margin: EdgeInsets.only(top: 10),
-                  child: Text(CustomString.Forgot_password),
+                  child: Text(
+                    style: TextStyle(
+                      fontFamily: 'Ubuntu',
+                    ),
+                      CustomString.Forgot_password
+                  ),
                 )
                 // Text(),
               ],

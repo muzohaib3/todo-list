@@ -48,6 +48,9 @@ class CustomString{
   static const String Transaction = "Transaction";
   static const String Balance = "Balance";
   static const String Date = "Date";
+  static const String Add_Beneficiary = "Add Beneficiary";
+  static const String Current_Balance = "Current Balance";
+  static const String Enter_Amount = "Enter Amount";
 
 
 }

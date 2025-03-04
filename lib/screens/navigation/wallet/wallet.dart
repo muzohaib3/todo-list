@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo/res/values/string/custom_string.dart';
+import 'package:todo/screens/home.dart';
+import 'package:todo/screens/navigation/home_screen.dart';
+import 'package:todo/screens/navigation/wallet/send_money.dart';
 
 class Wallet extends StatelessWidget {
   const Wallet({super.key});
@@ -25,7 +28,10 @@ class _WalletState extends State<_Wallet> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(onPressed: (){
+          // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
+        }, icon: Icon(Icons.arrow_back)),
         title: Text(
             "Wallet",
           style: TextStyle(
@@ -73,7 +79,9 @@ class _WalletState extends State<_Wallet> {
                     color: Color(0xFFDAF4F8),
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(BuildContext contex) => SendMoney() ));
+                    },
                     child: Text(
                       "Pay Now",
                       style: TextStyle(

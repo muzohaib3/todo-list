@@ -3,7 +3,7 @@ import 'package:todo/res/values/string/custom_string.dart';
 import 'package:todo/screens/navigation/deliveries.dart';
 import 'package:todo/screens/navigation/home_screen.dart';
 import 'package:todo/screens/navigation/tracking.dart';
-import 'package:todo/screens/navigation/wallet.dart';
+import 'package:todo/screens/navigation/wallet/wallet.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -51,10 +51,8 @@ class _DashboardState extends State<_Dashboard> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: [
-          BottomNavigationBarItem(
-              icon: Image.asset("assets/images/home.png"), label: CustomString.Home
-          ),
-          BottomNavigationBarItem(icon: Image.asset("assets/images/deliveries.png"), label: CustomString.Profile),
+          BottomNavigationBarItem(icon: Image.asset("assets/images/home.png"), label: CustomString.Home),
+          BottomNavigationBarItem(icon: Image.asset("assets/images/deliveries.png"), label: CustomString.Deliveries),
           BottomNavigationBarItem(icon: Image.asset("assets/images/wallet.png"), label: CustomString.Wallet),
           BottomNavigationBarItem(icon: Image.asset("assets/images/location.png"), label: CustomString.Location),
         ],

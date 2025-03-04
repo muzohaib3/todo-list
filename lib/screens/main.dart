@@ -7,7 +7,6 @@ void main() {
   runApp(
       MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData( primarySwatch: Colors.indigo),
         home: Scaffold(
         body: Splash(),
 
@@ -37,7 +36,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-          color: Colors.indigo,
+          color: Colors.blue.shade900,
         padding: EdgeInsets.only(left: 20, right: 20),
             child: Center(
               child: Column(
@@ -47,27 +46,14 @@ class _SplashState extends State<Splash> {
                       width: 150,
                       height: 150,
                       child:  Image.asset(
-                        "assets/images/expense.png",
+                        "assets/images/app_logo.png",
                         color: Colors.white,
                       ),
                     ),
-                    TextButton(
-                        onPressed:(){},
-                        child: const Text(
-                          CustomString.blue_ex_consumer,
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            color: Colors.white
-                          ),
-                        )
-                    )
                   ],
                 ),
             ),
-
         )
-
     );
   }
 }
