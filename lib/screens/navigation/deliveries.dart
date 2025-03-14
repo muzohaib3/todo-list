@@ -41,7 +41,6 @@ class ListViewLayout extends StatelessWidget {
   Widget build(BuildContext context) {
 
     bool isChecked = false;
-    List<String> listItems = ["Item 1","Item 1","Item 1","Item 1"];
     return Scaffold(
 
       body: Container(

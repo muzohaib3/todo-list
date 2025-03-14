@@ -1,4 +1,6 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/res/values/color/custom_colors.dart';
 import 'package:todo/res/values/string/custom_string.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,96 +10,156 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: _HomeScreen(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+              "26th Feb,2024",
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: "Ubuntu"
+            ),
+          ),
+        ),
+        body: LLDashboard(),
+      )
     );
   }
 }
 
-class _HomeScreen extends StatefulWidget {
-  const _HomeScreen({super.key});
+class LLDashboard extends StatelessWidget {
+  const LLDashboard({super.key});
 
-  @override
-  State<_HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<_HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    List<String> _list = ["Shipment Booked", "Shipment Arrived","Service Charges","Cash Deposit"];
 
-      appBar: AppBar(
-          title: Text("Home"),
-          backgroundColor: Colors.white,
-      ),
+    return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
+          margin: EdgeInsets.only(left: 10, right: 10),
 
-            children: [
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 
-              Container(
+                /** Shipment Trend Graphs **/
 
-                height: 200,
-                width: double.maxFinite,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(10)
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                        CustomString.Shipment_Trend,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold
+                Container(
+                  width: double.maxFinite,
+                  height: 200,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.black
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        child: Text(
+                          "Shipment Trend",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "Ubuntu"
+                          ),
                         ),
-                    )
-                  ],
+                        width: double.maxFinite,
+                        alignment: AlignmentDirectional.topStart,
+                        margin: EdgeInsets.only(left: 10, top: 10),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
 
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                /** Dashboard Tabs **/
+
+                Container(
+                  height: 200,
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    childAspectRatio: 3,
+                    children: List.generate(_list.length, (index) {
+                      return Container(
+                        margin: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: CustomColors.appContainerColor,
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+                        child: Center(
+                          child: Text(
+                            _list[index],
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: "Ubuntu"
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
                 ),
-                margin: EdgeInsets.only(top: 20, bottom: 20),
-                child: GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  children: [
-                    GridViewItem("56","Shipments Booked"),
-                    GridViewItem("207","Shipments Accepted"),
-                    GridViewItem("255","Service Charges"),
-                    GridViewItem("122","Cash Deposit"),
-                  ],
-                ),
-              ),
 
+                /** Shipment Statuses **/
 
-              Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Color(0xFFF5F5F5),
-                  borderRadius: BorderRadius.circular(10)
-                ),
-                child: Column(
-                  children: [
-                    ShipmentStatusLinearProgress(),
+                Container(
+                  alignment: Alignment.topLeft,
+                  width: double.maxFinite,
+                  margin: EdgeInsets.only(top: 15, bottom: 15),
+                  padding: EdgeInsets.all(25),
+                  decoration: BoxDecoration(
+                      color: CustomColors.appContainerColor,
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: Column(
+                    children: [
+                      TextHeaderCountWidget(header: CustomString.Shipments_Accepted,count: "23,000"),
+                      LinearProgressBarIndicator(llCount: 0.5),
+                      TextHeaderCountWidget(header: CustomString.Arrived_Shipments,count: "34,000"),
+                      LinearProgressBarIndicator(llCount: 0.8,),
+                      TextHeaderCountWidget(header: CustomString.Booked_Shipments,count: "34,000"),
+                      LinearProgressBarIndicator(llCount: 0.3,),
+                      TextHeaderCountWidget(header: CustomString.InTransit_Shipments,count: "34,000"),
+                      LinearProgressBarIndicator(llCount: 0.7,),
+                      TextHeaderCountWidget(header: CustomString.Shipments_Accepted,count: "23,000"),
+                      LinearProgressBarIndicator(llCount: 0.1,),
+                      TextHeaderCountWidget(header: CustomString.Arrived_Shipments,count: "34,000"),
+                      LinearProgressBarIndicator(llCount: 0.6,),
+                      TextHeaderCountWidget(header: CustomString.Booked_Shipments,count: "34,000"),
+                      LinearProgressBarIndicator(llCount: 0.5,),
+                      TextHeaderCountWidget(header: CustomString.InTransit_Shipments,count: "34,000"),
+                      LinearProgressBarIndicator(llCount: 0.2,),
 
-                    ShipmentStatusLinearProgress(),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        child: Row(
+                          children: [
+                            Container(
+                              child: Expanded(
+                                  child: Text(
+                                      "Total",
+                                    style: TextStyle(color: Colors.black, fontFamily: "Ubuntu"),
+                                  )
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.topRight,
+                                child: Expanded(
+                                    child: Text(
+                                        "(Infinity %)",
+                                      style: TextStyle(color: Colors.black, fontFamily: "Ubuntu"),
+                                    ),
 
-                    ShipmentStatusLinearProgress(),
+                                )
+                            )
 
-                    ShipmentStatusLinearProgress(),
-                  ],
-                ),
-              )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                )
 
-
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -105,98 +167,93 @@ class _HomeScreenState extends State<_HomeScreen> {
   }
 }
 
-class GridViewItem extends StatelessWidget {
-  final String itemCount;
-  final String itemHeader;
-
-  const GridViewItem(this.itemCount, this.itemHeader);
+class TextHeaderCountWidget extends StatelessWidget {
+  final String header;
+  final String count;
+  const TextHeaderCountWidget({
+    super.key,
+    required this.header,
+    required this.count
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-
-      margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        color: Color(0xFFF5F5F5), // Color should be inside BoxDecoration
-        borderRadius: BorderRadius.circular(15), // Border radius added
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-              "assets/images/deliveries.png",
-            color: Colors.indigoAccent,
-          ),
-
-          Container(
-            margin: EdgeInsets.only(top: 20),
-            child: Text(
-              itemCount,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                fontSize: 12
-              ),
-            ),
-          ),
-
-          Container(
-            child: Text(
-              itemHeader,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-}
-
-class ShipmentStatusLinearProgress extends StatefulWidget {
-  const ShipmentStatusLinearProgress({super.key});
-  @override
-  State<ShipmentStatusLinearProgress> createState() => _ShipmentStatusLinearProgressState();
-}
-
-class _ShipmentStatusLinearProgressState extends State<ShipmentStatusLinearProgress> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-
-      // color: Colors.grey,
-      child: Column(
-        children: [
-
-          Container(
-            width: double.maxFinite,
-            margin: EdgeInsets.only(top: 20),
-            alignment: Alignment.topLeft,
-            child: Column(
-              children: [
-                Text(CustomString.Shipment_Status),
-
-                Container(
-                  margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
-                  child: LinearProgressIndicator(
-                    value: 0.35, // percent filled
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.blue.shade900),
-                    backgroundColor: Color(0xFFF5F5F5),
+      margin: EdgeInsets.only(top: 10),
+        width: double.maxFinite,
+        child: Row(
+          children: [
+            Expanded(
+                child: Container(
+                  child: Text(
+                      header,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: "Ubuntu"
+                      )
                   ),
                 )
-              ],
             ),
-          ),
-        ],
-
-      ),
+            Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(right: 10),
+                  alignment: Alignment.topRight,
+                  child: Text(
+                    count,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: "Ubuntu"
+                    ),
+                  ),
+                )
+            )
+          ],
+        )
     );
   }
 }
+
+class LinearProgressBarIndicator extends StatelessWidget {
+
+  final double llCount;
+  const LinearProgressBarIndicator({
+    super.key, required this.llCount
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      child: SizedBox(
+        height: 6,
+        width: double.maxFinite,
+        child: LinearProgressIndicator(
+          backgroundColor: Colors.grey.shade300,
+          value: llCount.toDouble(),
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.blue.shade900),
+
+        ),
+      )
+    );
+  }
+}
+
+// class GridTabWidget extends StatelessWidget {
+//   const GridTabWidget({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }
+
+
+
+
+
+
+
+
 
 
 

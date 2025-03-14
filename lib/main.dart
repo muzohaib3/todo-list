@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:todo/screens/home.dart';
-import 'package:todo/res/values/string/custom_string.dart';
 
 void main() {
   runApp(

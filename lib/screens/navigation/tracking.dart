@@ -24,6 +24,7 @@ class _Tracking extends StatefulWidget {
 class _TrackingState extends State<_Tracking> {
 
   String title = "";
+  bool isHidden = false; // Changed to boolean
 
   @override
   Widget build(BuildContext context) {
@@ -32,20 +33,20 @@ class _TrackingState extends State<_Tracking> {
       /** Appbar **/
       appBar: AppBar(
         title: Text(
-            CustomString.Tracking,
-            style: TextStyle(
+          CustomString.Tracking,
+          style: TextStyle(
               color: Colors.black,
-              fontWeight: FontWeight.bold
-            ),
+              fontWeight: FontWeight.bold,
+              fontFamily: "Ubuntu"
+          ),
         ),
         leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back)),
       ),
 
       /** Main Body **/
-
       body: Center(
         child: Container(
-          margin: EdgeInsets.only(left: 20,right: 20),
+          margin: EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
 
@@ -56,53 +57,56 @@ class _TrackingState extends State<_Tracking> {
                 child: Image.asset("assets/images/tracking_icon.png"),
               ),
 
-              /** Search bar  **/
+              /** Search bar **/
               Container(
                 margin: EdgeInsets.only(top: 10),
                 width: double.maxFinite,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(10)
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(10)
                 ),
                 child: TextField(
                   onChanged: (value){
                     title = value;
                   },
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: CustomString.TrackingNumber,
-                    contentPadding: EdgeInsets.only(left: 10)
+                      border: InputBorder.none,
+                      hintText: CustomString.TrackingNumber,
+                      contentPadding: EdgeInsets.only(left: 10)
                   ),
                 ),
               ),
 
               /** Tracking Button **/
-
               Container(
-                  width: double.maxFinite,
-                  margin: EdgeInsets.only(top: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.blue.shade900
-                  ),
-                  child: TextButton(
-                    onPressed: (){
-
-                    },
-                    child: Text(
+                width: double.maxFinite,
+                margin: EdgeInsets.only(top: 10),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.blue.shade900
+                ),
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      isHidden = !isHidden;
+                    });
+                  },
+                  child: Text(
                       CustomString.Track,
-                        style: TextStyle(
-                            fontFamily: 'Ubuntu',
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300
-                        )
-                    ),
+                      style: TextStyle(
+                          fontFamily: 'Ubuntu',
+                          color: Colors.white,
+                          fontWeight: FontWeight.w300
+                      )
                   ),
                 ),
+              ),
 
               /** Tracking Number Details **/
-
-              TrackingLayoutDetails()
+              Visibility(
+                visible: isHidden,
+                child: TrackingLayoutDetails(),
+              ),
             ],
           ),
         ),
@@ -112,10 +116,7 @@ class _TrackingState extends State<_Tracking> {
 }
 
 /** Tracking Number Details **/
-
 class TrackingLayoutDetails extends StatelessWidget {
-  const TrackingLayoutDetails({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -147,7 +148,6 @@ class TrackingLayoutDetails extends StatelessWidget {
                 ),
               ),
             ),
-
             Container(
               margin: EdgeInsets.only(top: 10),
               alignment: Alignment.topLeft,
@@ -162,16 +162,17 @@ class TrackingLayoutDetails extends StatelessWidget {
               ),
             ),
             Container(
-                margin: EdgeInsets.only(top: 10),
-                alignment: Alignment.topLeft,
-                child: Text(
-                    CustomString.Order_info_received,
-                    style: TextStyle(
-                        fontFamily: 'Ubuntu',
-                        color: Colors.black,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 12
-                    ))
+              margin: EdgeInsets.only(top: 10),
+              alignment: Alignment.topLeft,
+              child: Text(
+                CustomString.Order_info_received,
+                style: TextStyle(
+                    fontFamily: 'Ubuntu',
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 12
+                ),
+              ),
             ),
             Container(
               margin: EdgeInsets.only(top: 10),
@@ -218,8 +219,3 @@ class TrackingLayoutDetails extends StatelessWidget {
     );
   }
 }
-
-
-
-
-

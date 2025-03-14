@@ -21,3 +21,9 @@ extension NavigationExtensions on BuildContext {
   }
 }
 
+extension ShowHideWidget on Widget {
+  Widget show(bool isVisible) {
+    return isVisible ? this : SizedBox.shrink();
+  }
+}
+
